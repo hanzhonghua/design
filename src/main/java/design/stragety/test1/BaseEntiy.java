@@ -1,11 +1,16 @@
-package design.entiy;
+package design.stragety.test1;
 
 public class BaseEntiy {
 
+	//商品数量
 	private String num;
+	//价格
 	private String price;
+	//几折
 	private String disCount;
+	//原价
 	private Double totalMoney;
+	//实付价格
 	private Double realMoney;
 	public String getNum() {
 		return num;

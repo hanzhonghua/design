@@ -1,8 +1,7 @@
-package design.stragety;
+package design.stragety.test1;
 
 import java.util.Scanner;
 
-import design.entiy.BaseEntiy;
 import design.util.Utils;
 
 /**
@@ -10,7 +9,7 @@ import design.util.Utils;
 	可以以相同的方式调用所有的算法，减少各种算法类和使用算法类之前的耦合。
 	简单说就是把不同的算法抽成不同的类，
 	
-	例子：输入商品价格和数量，得到总金额。会有不同的优惠策略：8折、9折、满减、折上减。。。
+	例子：输入商品价格和数量，得到总金额。会有不同的优惠策略：8折、9折、满减、折上300减100。。。
  */
 public class Test {
 	
@@ -41,6 +40,7 @@ public class Test {
 		return entiy;
 	}
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入数量：");
 		String num = sc.nextLine();
