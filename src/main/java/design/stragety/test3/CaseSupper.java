@@ -1,4 +1,4 @@
-package design.stragety.teste3;
+package design.stragety.test3;
 
 //收费算法父类接口
 public interface CaseSupper {

@@ -1,6 +1,6 @@
-package design.stragety.teste3.impl;
+package design.stragety.test3.impl;
 
-import design.stragety.teste3.CaseSupper;
+import design.stragety.test3.CaseSupper;
 
 //打折
 public class CashDisCount implements CaseSupper{

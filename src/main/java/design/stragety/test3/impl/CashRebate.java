@@ -1,6 +1,6 @@
-package design.stragety.teste3.impl;
+package design.stragety.test3.impl;
 
-import design.stragety.teste3.CaseSupper;
+import design.stragety.test3.CaseSupper;
 import design.util.Utils;
 
 //满减：输入满多少参数，和减多少参数

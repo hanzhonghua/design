@@ -1,4 +1,4 @@
-package design.stragety.teste3;
+package design.stragety.test3;
 
 /**
  * 使用了策略模式

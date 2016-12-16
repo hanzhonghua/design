@@ -1,8 +1,8 @@
-package design.stragety.teste3;
+package design.stragety.test3;
 
-import design.stragety.teste3.impl.CashDisCount;
-import design.stragety.teste3.impl.CashOriginal;
-import design.stragety.teste3.impl.CashRebate;
+import design.stragety.test3.impl.CashDisCount;
+import design.stragety.test3.impl.CashOriginal;
+import design.stragety.test3.impl.CashRebate;
 
 /**
 	策略模式具体实现：维护一个父类顶层对象的引用；
