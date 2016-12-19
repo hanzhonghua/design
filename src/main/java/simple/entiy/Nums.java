@@ -1,4 +1,4 @@
-package design.simple.entiy;
+package simple.entiy;
 
 public class Nums {
 

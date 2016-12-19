@@ -1,9 +1,9 @@
-package design.simple;
+package simple;
 
-import design.simple.impl.OperationAdd;
-import design.simple.impl.OperationDiv;
-import design.simple.impl.OperationMvl;
-import design.simple.impl.OperationSub;
+import simple.impl.OperationAdd;
+import simple.impl.OperationDiv;
+import simple.impl.OperationMvl;
+import simple.impl.OperationSub;
 
 //运算方法
 public class Operation {

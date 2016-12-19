@@ -9,6 +9,7 @@ public class OneTwo implements ReturnPrice{
 
 	@Override
 	public double getPrice(double price) {
+		System.out.println("满1000减200");
 		return price-200;
 	}
 

@@ -1,6 +1,6 @@
-package design.simple;
+package simple;
 
-import design.simple.entiy.Nums;
+import simple.entiy.Nums;
 
 public interface SimpleFactory {
 

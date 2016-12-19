@@ -1,7 +1,7 @@
-package design.simple.impl;
+package simple.impl;
 
-import design.simple.SimpleFactory;
-import design.simple.entiy.Nums;
+import simple.SimpleFactory;
+import simple.entiy.Nums;
 
 //减法
 public class OperationSub implements SimpleFactory {
