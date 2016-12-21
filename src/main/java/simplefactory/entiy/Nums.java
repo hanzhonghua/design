@@ -1,4 +1,4 @@
-package simple.entiy;
+package simplefactory.entiy;
 
 public class Nums {
 

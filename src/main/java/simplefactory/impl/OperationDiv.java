@@ -1,7 +1,7 @@
-package simple.impl;
+package simplefactory.impl;
 
-import simple.SimpleFactory;
-import simple.entiy.Nums;
+import simplefactory.SimpleFactory;
+import simplefactory.entiy.Nums;
 
 //除法
 public class OperationDiv implements SimpleFactory {

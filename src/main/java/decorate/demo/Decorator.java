@@ -18,5 +18,6 @@ public class Decorator implements Component{
 			component.operation();
 		}
 	}
-
 }
+
+

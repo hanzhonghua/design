@@ -1,9 +1,9 @@
-package simple;
+package simplefactory;
 
-import simple.impl.OperationAdd;
-import simple.impl.OperationDiv;
-import simple.impl.OperationMvl;
-import simple.impl.OperationSub;
+import simplefactory.impl.OperationAdd;
+import simplefactory.impl.OperationDiv;
+import simplefactory.impl.OperationMvl;
+import simplefactory.impl.OperationSub;
 
 //运算方法
 public class Operation {

@@ -1,7 +1,7 @@
-package simple.impl;
+package simplefactory.impl;
 
-import simple.SimpleFactory;
-import simple.entiy.Nums;
+import simplefactory.SimpleFactory;
+import simplefactory.entiy.Nums;
 
 //加法
 public class OperationAdd implements SimpleFactory {

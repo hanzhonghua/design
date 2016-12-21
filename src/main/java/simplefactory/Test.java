@@ -1,8 +1,8 @@
-package simple;
+package simplefactory;
 
 import java.util.Scanner;
 
-import simple.entiy.Nums;
+import simplefactory.entiy.Nums;
 
 /**
       输入2个数字和一个运算符，就结果：使用到了简单工厂模式，对象的创建和使用分离
