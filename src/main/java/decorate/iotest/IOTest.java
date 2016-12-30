@@ -1,10 +1,13 @@
 package decorate.iotest;
 
 import java.io.BufferedInputStream;
-import java.io.DataInputStream;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
+import java.io.PushbackInputStream;
 
 //IO包下的各个类与装饰模式有不接之缘，我们详细了解一下
 public class IOTest {
@@ -23,8 +26,7 @@ public class IOTest {
 		System.out.println("FileInputStream不支持mark/reset:"+inputStream.markSupported());
 		System.out.println("----------------------------------------");
 		
-		/*下面介绍一下BufferedInputStream,DataInputStream,PushbackInputStream对InputStream的装饰*/
-		
+		/*下面介绍一下BufferedInputStream,PushbackInputStream对InputStream的装饰*/
 		//1.BufferedInputStream，它提供了mark和reset
 		BufferedInputStream bis = new BufferedInputStream(inputStream);
 		System.out.println("BufferedInputStream支持mark/reset:"+bis.markSupported());
@@ -40,12 +42,35 @@ public class IOTest {
 		
 		System.out.println("----------------------------------------");
 		
-		//装饰城DataInputStream,我们为使用DataInputStream、BufferedInputStream的mark和reset功能，
-		//使用DataInputStream包装BufferedInputStream;如果不用BufferedInputStream使用InputStream，read返回的结果-1
-		//表示已经读取完毕；BufferedInputStream已经将文件读取完毕，并缓存到了堆上默认缓冲区大小8192B
-		DataInputStream dis = new DataInputStream(bis);
-		//这个是BufferedInputStream提供的功能，不使用BufferedInputStream的话会报错
-		dis.reset();
-		int readInt = dis.readInt();
+		//PushbackInputStream无法装饰BufferedInputStream，因为重写了mark和reset
+		//文件已读到末尾，重新打开一个文件句柄
+		inputStream = new FileInputStream(path);
+		PushbackInputStream pushbackInputStream = new PushbackInputStream(inputStream,length);
+		byte[] b = new byte[length];
+		//读完整个流
+		pushbackInputStream.read(b);
+		System.out.println("unread回退前的内容："+new String(b));
+		System.out.println("PushbackInputStream装饰后支持回退操作unread");
+		//回退
+		pushbackInputStream.unread(b);
+		b = new byte[length];
+		//如果不回退，文件已读完，没有任何打印
+		pushbackInputStream.read(b);
+		System.out.println("unread回退后的内容："+new String(b));
+		
+		System.out.println("----------------------------------------");
+		
+		/*先将InputStream装饰Reader*/
+		//之前已被PushbackInputStream读完，重新打开文件句柄
+		inputStream = new FileInputStream(path);
+		InputStreamReader reader = new InputStreamReader(inputStream, "utf-8");
+		System.out.println("InputStreamReader有reader的功能，比如转码："+reader.getEncoding()); 
+		
+		System.out.println("----------------------------------------");
+		
+		BufferedReader bufferedReader = new BufferedReader(reader);
+		System.out.println("BufferedReader有readLine等功能(读一行)：" + bufferedReader.readLine()); 
+		LineNumberReader numberReader = new LineNumberReader(reader);
+		System.out.println("当前行号(行号从0开始)："+numberReader.getLineNumber());
 	}
 }
