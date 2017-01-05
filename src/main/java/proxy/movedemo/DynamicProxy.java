@@ -20,7 +20,6 @@ public class DynamicProxy implements InvocationHandler {
 	 */
 
 	// 以上的实现是被代理类必须实现接口才可以的，不实现就看只需要加一下两句代码即可
-	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 		System.out.println("before");
 		Method sourceMethod = source.getClass().getDeclaredMethod(method.getName(), method.getParameterTypes());
