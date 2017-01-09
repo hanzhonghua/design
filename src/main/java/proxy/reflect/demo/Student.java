@@ -3,27 +3,26 @@ package proxy.reflect.demo;
 public class Student {
 
 	private String name ;
-	private Integer age ;
+	Integer age ;
 	public Double money;
 	
-	@SuppressWarnings("unused")
 	private Student() {}
 	public Student(String name){
 		this.name = name;
 	}
-	
 	Student(Integer age){
 		this.age = age;
 	}
-	
 	public Student(String name, Integer age) {
-		super();
 		this.name = name;
 		this.age = age;
 	}
 	
 	public void learn(){
-		System.out.println("the student xiaoli is learning");
+		System.out.println("学生正在学习");
+	}
+	public void learn(String name){
+		System.out.println(name+"正在学习");
 	}
 	
 	public String toString() {
