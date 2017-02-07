@@ -15,29 +15,24 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class ReflectConstructor {
 
-	public static void main(String[] args) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		try {
-			//拿到字节码文件对象
-			Class<?> class1 = Class.forName("proxy.reflect.demo.Student");
-			// 拿到public修饰的构造方法
-			// Constructor<?>[] constructors = class1.getConstructors();
-			// 拿到所有构造方法
-			Constructor<?>[] constructors = class1.getDeclaredConstructors();
-			for (Constructor<?> c : constructors) {
-				System.out.println(c);
-			}
-			
-			//拿到单个的构造方法对象(无参构造)
-			//Constructor<?> constructor = class1.getDeclaredConstructor();
-			//Object object = constructor.newInstance();
-			//带参数的构造方法
-			Constructor<?> constructor = class1.getDeclaredConstructor(Integer.class);
-			constructor.setAccessible(true);
-			Object object = constructor.newInstance(24);
-			System.out.println(object);
-			
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not find");
+	public static void main(String[] args) throws Exception{
+		//拿到字节码文件对象
+		Class<?> c = Class.forName("proxy.reflect.demo.Student");
+		// 拿到public修饰的构造方法
+		 Constructor<?>[] constructors = c.getConstructors();
+		// 拿到所有构造方法
+//		Constructor<?>[] constructors = c.getDeclaredConstructors();
+		for (Constructor<?> constructor : constructors) {
+			System.out.println(constructor);
 		}
+		
+		//拿到单个的构造方法对象(无参构造)
+		//Constructor<?> constructor = class1.getDeclaredConstructor();
+		//Object object = constructor.newInstance();
+		//带参数的构造方法
+		Constructor<?> constructor = c.getDeclaredConstructor(String.class,Integer.class);
+		constructor.setAccessible(true);
+		Object object = constructor.newInstance("小明",24);
+		System.out.println(object);
 	}
 }

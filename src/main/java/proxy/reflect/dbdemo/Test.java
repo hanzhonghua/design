@@ -8,12 +8,14 @@ public class Test {
 		DAOUtil session = new DAOUtil();
 		Student student = new Student();
 		student.setId("1");
-		student.setName("小明");
+		student.setName("xiaoming");
 		student.setAge(18);
-		student.setGrade(100d);
+		student.setGrade(100);
 		//保存
-		String sql = session.getSql(student);
-		System.out.println("保存对象的sql："+sql);
+		// String sql = session.getSql(student);
+		// System.out.println("保存对象的sql："+sql);
+		int result = session.saveObject(student);
+		System.out.println(result);
 		//查询
 		Student s = (Student)session.getObject("proxy.reflect.dbdemo.Student", "1");
 		System.out.println("获取的信息："+s);

@@ -5,7 +5,7 @@ public class Student {
 	private String id;
 	private String name;
 	private Integer age;
-	private Double grade;
+	private Integer grade;
 	public String getId() {
 		return id;
 	}
@@ -24,10 +24,10 @@ public class Student {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	public Double getGrade() {
+	public Integer getGrade() {
 		return grade;
 	}
-	public void setGrade(Double grade) {
+	public void setGrade(Integer grade) {
 		this.grade = grade;
 	}
 	@Override

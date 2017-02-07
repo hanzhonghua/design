@@ -1,8 +1,8 @@
 package proxy.movedemo;
 
-public class TestClass{
+public class TestClass implements TestInterface{
 
-	public void method1() {
+	public void method1(){
 		System.out.println("TestClass.method1");
 	}
 

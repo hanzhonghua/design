@@ -16,15 +16,18 @@ import java.util.Properties;
 public class ReflectProperty {
 
 	public static void main(String[] args) throws Exception {
+		//加载文件中的键值对数据
 		Properties p = new Properties();
-//		FileInputStream is = new FileInputStream("config/config.properties");
+		/**
+			JavaAPI：查找与给定类相关的资源的规则是通过定义类的 class loader 实现的,此方法委托此对象的类加载器,
+			 如果此对象通过引导类加载器加载,则此方法将委托给 ClassLoader.getSystemResourceAsStream(String)。
+			通过以上说明此处可以填写任意类，因为这些类都会有由加载器加载，最后都是调用类加载器的方法;
+			所以此处写Object.class、String.class、ReflectProperty.class等等都时可以的。
+		*/
 		InputStream is = ReflectProperty.class.getResourceAsStream("/config.properties");
-		try {
-			p.load(is);
-		} catch (IOException e) {
-			System.out.println("读取配置文件失败或者配置文件不存在");
-		}
-		System.out.println(p.getProperty("name")+":"+p.getProperty("age"));
+		p.load(is);
+		is.close();
+		System.out.println("数据库链接:"+p.getProperty("dbName")+"\n用户名:"+p.getProperty("username")+"\n密码:"+p.getProperty("password"));
 	}
 	
 	public void test(){

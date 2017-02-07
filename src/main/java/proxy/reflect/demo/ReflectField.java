@@ -3,6 +3,7 @@ package proxy.reflect.demo;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
 	通过反射拿到成员变量对象(Field)并使用
@@ -14,29 +15,32 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class ReflectField {
 
-	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException, InstantiationException, NoSuchMethodException, InvocationTargetException {
-		try {
-			//拿到字节码文件对象
-			Class<?> class1 = Class.forName("proxy.reflect.demo.Student");
-			
-			Constructor<?> constructor = class1.getDeclaredConstructor();
-			constructor.setAccessible(true);
-			Object object = constructor.newInstance();
-			//Field[] fields = class1.getFields();
-			//通过字节码文件对象获取Field对象
-			Field[] fields = class1.getDeclaredFields();
-			for (Field field : fields) {
-				System.out.println(field);
-			}
-			Field field = class1.getDeclaredField("money");
-			System.out.println(field.getType());
-			System.out.println(field.getName());
-			field.setAccessible(true);
-			System.out.println("--\n"+field.get(object));
-			field.set(object, 2000d);
-			System.out.println("--\n"+field.get(object));
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not find");
+	public static void main(String[] args) throws Exception{
+		//拿到字节码文件对象
+		Class<?> class1 = Class.forName("proxy.reflect.demo.Student");
+		//直接使用字节码文件对象创建对象实例，默认调用的是无参构造，而无参构造是private修饰的，所以会抛异常
+		Object object = class1.newInstance();
+		//Field[] fields = class1.getFields();
+		
+		//通过字节码文件对象获取Field对象
+		Field[] fields = class1.getDeclaredFields();
+		for (Field field : fields) {
+			System.out.println(field);
 		}
+		//只能获取带public修饰的
+//		Field field = class1.getField("age");
+		Field field = class1.getDeclaredField("age");
+		field.setAccessible(true);
+		System.out.println("-------");
+		System.out.println(field);
+		System.out.println("-------");
+		System.out.println(field.getType());
+		System.out.println(field.getName());
+		System.out.println("--\n"+field.get(object));
+		field.set(object, 2000);
+		System.out.println("--\n"+field.get(object));
+		System.out.println(field.getModifiers());
+		System.out.println(field.getType());
+		System.out.println(field.getName());
 	}
 }

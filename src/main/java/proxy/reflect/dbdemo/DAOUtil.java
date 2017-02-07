@@ -92,7 +92,7 @@ public class DAOUtil {
 		String tableName = className.substring(className.lastIndexOf(".")+1,className.length());
 		Class<?> c = null;
 		try {
-			c = Class.forName("className");
+			c = Class.forName(className);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -120,7 +120,7 @@ public class DAOUtil {
 							//如果参数为String类型，则从结果集中按照列名取出对应值，并执行改set方法
 							method.invoke(obj, set.getString(columnName));
 						}
-						if(types[0] == int.class){
+						if(types[0] == int.class || types[0] == Integer.class){
 							method.invoke(obj, set.getInt(columnName));
 						}
 					}

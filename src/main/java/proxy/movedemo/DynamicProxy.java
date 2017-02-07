@@ -31,8 +31,12 @@ public class DynamicProxy implements InvocationHandler {
 
 	public static void main(String[] args) {
 		// 代理的入口
-		TestInterface o = (TestInterface) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
-				new Class[] { TestInterface.class }, new DynamicProxy(new TestClass()));
+		
+		/*//此种方法是TestClass实现了TestInterface接口
+		 * TestInterface o = (TestInterface) Proxy.newProxyInstance(TestInterface.class.getClassLoader(),
+				TestClass.class.getInterfaces(), new DynamicProxy(new TestClass()));*/
+		TestInterface o = (TestInterface) Proxy.newProxyInstance(TestInterface.class.getClassLoader(),
+				new Class[]{TestInterface.class}, new DynamicProxy(new TestClass()));
 		o.method1();
 		o.method2();
 		o.method3();

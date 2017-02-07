@@ -6,27 +6,26 @@ public class Student {
 	Integer age ;
 	public Double money;
 	
-	private Student() {}
-	public Student(String name){
+	public Student() {}
+	Student(String name){
 		this.name = name;
 	}
-	Student(Integer age){
-		this.age = age;
-	}
-	public Student(String name, Integer age) {
+	private Student(String name, Integer age) {
 		this.name = name;
 		this.age = age;
 	}
 	
-	public void learn(){
+	public static void learn(String name,String address){
+		System.out.println(name+"在"+address+"学习");
+	}
+	private void learn(){
 		System.out.println("学生正在学习");
 	}
-	public void learn(String name){
-		System.out.println(name+"正在学习");
+	String learn(String name){
+		return name+"正在学习";
 	}
 	
 	public String toString() {
 		return "Student [name=" + name + ", age=" + age + "]";
 	}
-	
 }
