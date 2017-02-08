@@ -1,10 +1,10 @@
 package simplefactory.impl;
 
-import simplefactory.SimpleFactory;
+import simplefactory.JiSuan;
 import simplefactory.entiy.Nums;
 
 //除法
-public class OperationDiv implements SimpleFactory {
+public class OperationDiv implements JiSuan {
 
 	public double getSum(Nums n) throws Exception {
 		if(n.getNumB() != 0){

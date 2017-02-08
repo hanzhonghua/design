@@ -23,7 +23,7 @@ public class Test {
 		nums.setNumA(Double.valueOf(numA));
 		nums.setNumB(Double.valueOf(numB));
 		try {
-			System.out.println("运算结果：" + Operation.operation(operation).getSum(nums));
+			System.out.println("运算结果：" + OperationFactory.operation(operation).getSum(nums));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {

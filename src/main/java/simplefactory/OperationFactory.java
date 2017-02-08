@@ -5,11 +5,10 @@ import simplefactory.impl.OperationDiv;
 import simplefactory.impl.OperationMvl;
 import simplefactory.impl.OperationSub;
 
-//运算方法
-public class Operation {
+public class OperationFactory {
 	
-	public static SimpleFactory operation(String operation){
-		SimpleFactory factory = null;
+	public static JiSuan operation(String operation){
+		JiSuan factory = null;
 		switch(operation){
 			case "+":
 				factory = new OperationAdd();

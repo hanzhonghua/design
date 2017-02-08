@@ -2,7 +2,8 @@ package simplefactory;
 
 import simplefactory.entiy.Nums;
 
-public interface SimpleFactory {
+//运算方法
+public interface JiSuan {
 
 	double getSum(Nums n)throws Exception;
 }
