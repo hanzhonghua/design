@@ -5,6 +5,6 @@ public class ConcreteStragetyC implements Stragety {
 
 	@Override
 	public void test() {
-		System.out.println("策略C算法计算");
+		System.out.println("算法C实现");
 	}
 }

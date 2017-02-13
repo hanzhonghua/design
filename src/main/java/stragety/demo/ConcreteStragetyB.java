@@ -5,7 +5,7 @@ public class ConcreteStragetyB implements Stragety {
 
 	@Override
 	public void test() {
-		System.out.println("策略B算法计算");
+		System.out.println("算法B实现");
 	}
 
 }
