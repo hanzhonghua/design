@@ -1,7 +1,5 @@
 package stragety.sort;
 
-import java.util.ArrayList;
-
 /**
  * 方法头上的注释都是引出的后一个方法
  * @Title: SortUtil.java
