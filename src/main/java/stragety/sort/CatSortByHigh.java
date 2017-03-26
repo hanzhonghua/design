@@ -1,5 +1,7 @@
 package stragety.sort;
 
+import java.util.Collections;
+
 /**
  *根据体中比较猫的大小，实现Comparator接口 
  * @Title: CatSortByHeight.java
@@ -8,7 +10,6 @@ package stragety.sort;
  */
 public class CatSortByHigh implements Comparator {
 
-	@Override
 	public int compare(Object o1, Object o2) {
 		//既然知道比较的是猫，直接强转
 		if(((Cat)o1).getHigh() > ((Cat)o2).getHigh()){

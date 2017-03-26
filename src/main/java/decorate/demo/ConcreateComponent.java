@@ -6,7 +6,6 @@ package decorate.demo;
  */
 public class ConcreateComponent implements Component{
 
-	@Override
 	public void operation() {
 		System.out.println("具体对象的操作");
 	}
