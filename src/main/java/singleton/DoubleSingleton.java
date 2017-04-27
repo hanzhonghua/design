@@ -6,14 +6,14 @@ package singleton;
  */
 public class DoubleSingleton {
 
-	private volatile static DoubleSingleton ds;
+	private  static DoubleSingleton instance;
 	private DoubleSingleton(){
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	};
+	}
 	
 	/*
 	 * 代码中1出的判断可以理解，同步实际上是非常浪费性能的，那么有没有一个方法减少同步的开销不就更好了么，因此1出代码出现了
@@ -36,36 +36,27 @@ public class DoubleSingleton {
 	 * 可以看到饿汉式占用内存，懒汉式处理繁琐，那么有没有一种结合了两者有点的方法呢？静态内部类可以完成！！！！
 	 */
 	public static DoubleSingleton getInstance(){
-		if(ds == null){                             //1
-			//此处会有多个线程同时到达				//2
+		if(instance == null){                             //1
+			//此处会有多个线程同时到达					  //2
 			synchronized (DoubleSingleton.class) {
-				if (ds == null) {                    //3
-					ds = new DoubleSingleton();      //4
+				if (instance == null) {                    //3
+					instance = new DoubleSingleton();      //4
 				}
 			}
 		}
-		return ds;
+		return instance;
 	}
 	
 	public static void main(String[] args) {
-		Thread t1 = new Thread(new Runnable() {
-			public void run() {
-				System.out.println(getInstance().hashCode());
-			}
-		},"t1");
-		Thread t2 = new Thread(new Runnable() {
-			public void run() {
-				System.out.println(getInstance().hashCode());
-			}
-		},"t2");
-		Thread t3 =new Thread(new Runnable() {
-			public void run() {
-				System.out.println(getInstance().hashCode());
-			}
-		},"t3");
-		t1.start();
-		t2.start();
-		t3.start();
+		for (int i = 0; i < 100; i++) {
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					System.out.println(DoubleSingleton.getInstance().hashCode());
+				}
+			}).start();
+		}
 	}
 	
 }

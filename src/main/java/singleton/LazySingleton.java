@@ -1,5 +1,7 @@
 package singleton;
 
+import java.lang.reflect.Constructor;
+
 /*
  * 单例模式：懒汉式,又称为延迟加载，在需要调用的时候才去创建对象，但是在多线程环境下，会创建多个对象
  * 做修改在方法上加锁，synchronized，这样做就会导致在多线程下性能非常低，每个线程进来之后都需要获取锁
@@ -7,21 +9,18 @@ package singleton;
  */
 public class LazySingleton {
 
-	private LazySingleton(){
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	};
 	
-	private static LazySingleton ls;
+	private LazySingleton() {}
+	//使用静态变量记录类的唯一实例
+	private static LazySingleton instance;
 	
-	public synchronized static LazySingleton getInstance(){
-		if(ls == null){
-			ls = new LazySingleton();
+	public static LazySingleton getInstance(){
+		if(instance == null){
+			synchronized(LazySingleton.class){
+				instance = new LazySingleton();
+			}
 		}
-		return ls;
+		return instance;
 	}
 	
 	public static void main(String[] args) {
@@ -34,7 +33,7 @@ public class LazySingleton {
 		/*
 		 * 多线程环境出现问题，产生了多个对象
 		 */
-		Thread t1 = new Thread(new Runnable() {
+		/*Thread t1 = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				System.out.println(getInstance().hashCode());
@@ -55,6 +54,16 @@ public class LazySingleton {
 		
 		t1.start();
 		t2.start();
-		t3.start();
+		t3.start();*/
+		try {
+			Class<?> cl = Class.forName("singleton.LazySingleton");
+			Constructor<?> constructor = cl.getDeclaredConstructor();
+			constructor.setAccessible(true);
+			LazySingleton obj = (LazySingleton) constructor.newInstance();
+			LazySingleton singleton = getInstance();
+			System.out.println(obj == singleton);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

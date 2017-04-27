@@ -4,6 +4,7 @@ public class SwitchEnum {
 
 	ColorEnum color = ColorEnum.RED;
 
+	@SuppressWarnings("incomplete-switch")
 	public void change() {
 		switch (color) {
 		case RED:

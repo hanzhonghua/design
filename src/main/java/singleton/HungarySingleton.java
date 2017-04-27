@@ -17,8 +17,10 @@ public class HungarySingleton {
 		}
 	};
 	
+	//静态方法
 	private static final HungarySingleton instance = new HungarySingleton();
 	
+	//必须使用static，如果不加就需要调用方创建实例然后调用，而构造函数是私有的
 	public static HungarySingleton getInstance(){
 		return instance;
 	}
