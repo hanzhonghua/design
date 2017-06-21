@@ -7,10 +7,10 @@ package singleton;
 public enum EnumSingleton {
 
 	INSTANCE;
+	
+	public void print(){
+		System.out.println("I am EnumSingleton");
+	}
+	
 }
 
-class ReflectSingleton{
-	public static void main(String[] args) {
-		EnumSingleton instance = EnumSingleton.INSTANCE;
-	}
-}

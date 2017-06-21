@@ -17,7 +17,9 @@ public class LazySingleton {
 	public static LazySingleton getInstance(){
 		if(instance == null){
 			synchronized(LazySingleton.class){
-				instance = new LazySingleton();
+				if (instance == null) {
+					instance = new LazySingleton();
+				}
 			}
 		}
 		return instance;
@@ -56,12 +58,14 @@ public class LazySingleton {
 		t2.start();
 		t3.start();*/
 		try {
+			// 反射破坏单例模式
 			Class<?> cl = Class.forName("singleton.LazySingleton");
 			Constructor<?> constructor = cl.getDeclaredConstructor();
 			constructor.setAccessible(true);
 			LazySingleton obj = (LazySingleton) constructor.newInstance();
 			LazySingleton singleton = getInstance();
 			System.out.println(obj == singleton);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

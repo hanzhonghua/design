@@ -1,12 +1,15 @@
 package singleton;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /*
  * 单例模式：双重检测机制，该机制针对懒汉式单例模式的改造，无非就是在同步的外边报了一层判断，这样真的
  * 有用么 ？？？
  */
 public class DoubleSingleton {
 
-	private  static DoubleSingleton instance;
+	private volatile static DoubleSingleton instance;
 	private DoubleSingleton(){
 		try {
 			Thread.sleep(1000);
@@ -48,15 +51,17 @@ public class DoubleSingleton {
 	}
 	
 	public static void main(String[] args) {
-		for (int i = 0; i < 100; i++) {
-			new Thread(new Runnable() {
+		ExecutorService pool = Executors.newCachedThreadPool();
+		for (int i = 0; i < 10000; i++) {
+			pool.submit(new Runnable() {
 				
 				@Override
 				public void run() {
 					System.out.println(DoubleSingleton.getInstance().hashCode());
 				}
-			}).start();
+			});
 		}
+		pool.shutdown();
 	}
 	
 }
